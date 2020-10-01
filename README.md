@@ -56,13 +56,9 @@ Things you may want to cover:
 | days_id      | integer    | null: false                    |
 | price        | integer    | null: false                    |
 | user_id      | integer    | null: false  foreign_key: true |
-| address_id   | integer    | foreign_key: true              |
-| order_id     | integer    | foreign_key: true              |
 
 ## Association
 
-- has_one    :address
-- has_one    :order
 - belongs_to :user
 
 ## addresses テーブル
@@ -78,7 +74,6 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :product
 - belongs_to :order
 
 ## orders テーブル
@@ -86,7 +81,7 @@ Things you may want to cover:
 | Column      | Type       | Options                        |
 | ----------  | ---------- | ------------------------------ |
 | user_id     | integer    | null: false, foreign_key: true |
-| products_id | integer    | null: false, foreign_key: true |
+| product_id  | integer    | null: false, foreign_key: true |
 
 ### Association
 
