@@ -45,16 +45,19 @@ Things you may want to cover:
 
 ## products テーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| name       | string     | null: false                    |
-| details    | text       | null: false                    |
-| category   | integer    | null: false                    |
-| status     | integer    | null: false                    |
-| fee        | integer    | null: false                    |
-| consigner  | integer    | null: false                    |
-| days       | integer    | null: false                    |
-| price      | integer    | null: false                    |
+| Column       | Type       | Options                        |
+| ----------   | ---------- | ------------------------------ |
+| name         | string     | null: false                    |
+| details      | text       | null: false                    |
+| category_id  | integer    | null: false                    |
+| status_id    | integer    | null: false                    |
+| fee_id       | integer    | null: false                    |
+| consigner_id | integer    | null: false                    |
+| days_id      | integer    | null: false                    |
+| price        | integer    | null: false                    |
+| user_id      | integer    | null: false  foreign_key: true |
+| address_id   | integer    | foreign_key: true              |
+| order_id     | integer    | foreign_key: true              |
 
 ## Association
 
@@ -71,9 +74,7 @@ Things you may want to cover:
 | municipality | string     | null: false                    |
 | address      | string     | null: false                    |
 | phone_number | string     | null: false                    |
-| user_id      | references | null: false, foreign_key: true |
-| product_id   | references | null: false, foreign_key: true |
-| order_id     | references | null: false, foreign_key: true |
+| order_id     | integer    | null: false, foreign_key: true |
 
 ### Association
 
@@ -82,9 +83,12 @@ Things you may want to cover:
 
 ## orders テーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
+| Column      | Type       | Options                        |
+| ----------  | ---------- | ------------------------------ |
+| user_id     | integer    | null: false, foreign_key: true |
+| products_id | integer    | null: false, foreign_key: true |
 
 ### Association
 
-- has_one    :address
+- has_one   :address
+- belong_to :user
