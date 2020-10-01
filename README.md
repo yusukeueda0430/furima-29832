@@ -64,15 +64,15 @@ Things you may want to cover:
 
 ## addresses テーブル
 
-| Column        | Type       | Options                        |
-| ------------  | ---------- | ------------------------------ |
-| postal        | string     | null: false                    |
-| prefectures   | integer    | null: false                    |
-| municipality  | string     | null: false                    |
-| address       | string     | null: false                    |
-| building_name | string     |                                |
-| phone_number  | string     | null: false                    |
-| order_id      | integer    | null: false, foreign_key: true |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| postal         | string     | null: false                    |
+| prefectures_id | integer    | null: false                    |
+| municipality   | string     | null: false                    |
+| address        | string     | null: false                    |
+| building_name  | string     |                                |
+| phone_number   | string     | null: false                    |
+| order_id       | integer    | null: false, foreign_key: true |
 
 ### Association
 
