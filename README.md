@@ -59,18 +59,20 @@ Things you may want to cover:
 
 ## Association
 
+- has_one    :order
 - belongs_to :user
 
 ## addresses テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| postal       | string     | null: false                    |
-| prefectures  | string     | null: false                    |
-| municipality | string     | null: false                    |
-| address      | string     | null: false                    |
-| phone_number | string     | null: false                    |
-| order_id     | integer    | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------  | ---------- | ------------------------------ |
+| postal        | string     | null: false                    |
+| prefectures   | integer    | null: false                    |
+| municipality  | string     | null: false                    |
+| address       | string     | null: false                    |
+| building_name | string     |                                |
+| phone_number  | string     | null: false                    |
+| order_id      | integer    | null: false, foreign_key: true |
 
 ### Association
 
@@ -87,3 +89,4 @@ Things you may want to cover:
 
 - has_one   :address
 - belong_to :user
+- belong_to :product
