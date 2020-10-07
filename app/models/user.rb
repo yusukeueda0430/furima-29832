@@ -5,11 +5,18 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          has_many :products
          has_many :orders
-         validates :password, format: { with: /\A[a-z0-9]+\z/i, message: "is invalid. Input half-width characters."}, presence: true
-         validates :nickname, presence: true
-         validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "is invalid. Input full-width characters."}, presence: true
-         validates :first_hurigana, format: { with: /\A[ァ-ヶー－]+\z/, message: "is invalid. Input full-width katakana characters."}, presence: true
-         validates :last_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "is invalid. Input full-width characters."}, presence: true
-         validates :last_hurigana, format: { with: /\A[ァ-ヶー－]+\z/, message: "is invalid. Input full-width katakana characters."}, presence: true
-         validates :birthday, presence: true
+
+         name = /\A[ぁ-んァ-ン一-龥]/
+         hurigana = /\A[ァ-ヶー－]+\z/
+         password = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,100}+\z/i
+
+         with_options presence:true do
+         validates :password, format: { with: password , message: "英数字混合でお願いします" }
+         validates :nickname
+         validates :first_name, format: { with: name , message: "漢字、ひらがな、カタカナでお願いします" }
+         validates :first_hurigana, format: { with: hurigana , message: "カタカナでお願いします"}
+         validates :last_name, format: { with: name , message: "漢字、ひらがな、カタカナでお願いします" }
+         validates :last_hurigana, format: { with: hurigana , message: "カタカナでお願いします" }
+         validates :birthday
+         end
 end
