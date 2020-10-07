@@ -83,6 +83,30 @@ describe User do
         expect(@user.errors.full_messages).to include("Last name can't be blank")
       end
 
+      it "本名の名前が数字では登録できない" do
+        @user.last_name = "000000"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name 漢字、ひらがな、カタカナでお願いします")
+      end
+
+      it "本名の名字が数字では登録できない" do
+        @user.first_name = "000000"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name 漢字、ひらがな、カタカナでお願いします")
+      end
+
+      it "本名の名前が記号では登録できない" do
+        @user.last_name = "%%%%%%"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name 漢字、ひらがな、カタカナでお願いします")
+      end
+
+      it "本名の名字が記号では登録できない" do
+        @user.first_name = "%%%%%%"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name 漢字、ひらがな、カタカナでお願いします")
+      end
+
       it "本名の名字のフリガナが漢字だと登録できない" do
         @user.first_hurigana = "山山"
         @user.valid?
