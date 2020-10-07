@@ -11,7 +11,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :first_hurigana,     null: false, default: ""
       t.string :last_name,          null: false, default: ""
       t.string :last_hurigana,      null: false, default: ""
-      t.date   :birthday,           null: false, default: ""
+      t.date   :birthday,           null: false
 
       ## Recoverable
       t.string   :reset_password_token
