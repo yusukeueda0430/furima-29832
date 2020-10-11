@@ -11,17 +11,17 @@ class Product < ApplicationRecord
   has_one_attached :image
 
   with_options numericality: { other_than: 1 }, presence:true do
-  validates :category_id
-  validates :consider_id
-  validates :days_id
-  validates :fee_id
-  validates :status_id
+   validates :category_id
+   validates :consider_id
+   validates :days_id
+   validates :fee_id
+   validates :status_id
   end
 
   with_options presence:true do
-  validates :name
-  validates :details
-  validates :price, numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message:'は半角数字、また300~999999円でお願いします' }
+   validates :name
+   validates :details
+   validates :price, numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message:'は半角数字、また300~999999円でお願いします' }
   end
 
   validate :image_presence
