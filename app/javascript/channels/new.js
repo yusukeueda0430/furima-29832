@@ -4,7 +4,7 @@ const item_price = document.getElementById("item-price")
 const tax_price = document.getElementById("add-tax-price")
 const get_money = document.getElementById("profit")
 
-i.addEventListener('keyup', function(){
+item_price.addEventListener('keyup', function(){
      let amount = document.getElementById('item-price').value; 
      let tax = Math.ceil(amount * 0.1);
      let profit = Math.floor(amount * 0.9);
