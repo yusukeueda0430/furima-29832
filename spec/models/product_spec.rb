@@ -24,6 +24,13 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include("Name can't be blank")
       end
 
+      it "商品説明がないと、出品できない" do
+        @product.details = nil
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Details can't be blank")
+      end
+
+
       it "カテゴリを選択していないと、出品できない" do
         @product.category_id = 1
         @product.valid?
@@ -36,7 +43,7 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include("Status must be other than 1")
       end
 
-      it "配送料の負担を選択していないと、出品できない"do
+      it "配送料の負担を選択していないと、出品できない" do
         @product.fee_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Fee must be other than 1")
@@ -61,13 +68,13 @@ RSpec.describe Product, type: :model do
       end
 
       it "価格が300より安いと、出品できない" do
-        @product.price = '200'
+        @product.price = 200
         @product.valid?
         expect(@product.errors.full_messages).to include("Price は半角数字、また300~999999円でお願いします")
       end
 
       it "価格が9999999より高いと、出品できない" do
-        @product.price = '100000000'
+        @product.price = 100000000
         @product.valid?
         expect(@product.errors.full_messages).to include("Price は半角数字、また300~999999円でお願いします")
       end
