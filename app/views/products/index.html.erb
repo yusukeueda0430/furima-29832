@@ -181,9 +181,9 @@
   <%# /商品一覧 %>
 </div>
 <div class='purchase-btn'>
-  <span class='purchase-btn-text'></span>
-  <%= link_to "出品する", new_product_path, class: "shuppin" %>
+  <span class='purchase-btn-text'>出品する</span>
+  <%= link_to new_product_path do %>
     <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
-  </a>
+  <% end %>
 </div>
 <%= render "shared/footer" %>
