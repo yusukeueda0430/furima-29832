@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    if product.save
+    if @product.save
        redirect_to root_path
     else
       render :new
@@ -34,6 +34,16 @@ class ProductsController < ApplicationController
       redirect_to root_path
     else
         render :edit
+    end
+  end
+
+  def destroy
+    product = Product.find(params[:id])
+    product.destroy
+    if product.valid?
+       redirect_to root_path
+    else
+      render :show
     end
   end
 
