@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
 
   def index
     @product = Product.all.order("created_at DESC")
-    
   end
 
   def new
@@ -39,8 +38,7 @@ class ProductsController < ApplicationController
 
   def destroy
     product = Product.find(params[:id])
-    product.destroy
-    if product.valid?
+    if product.destroy
        redirect_to root_path
     else
       render :show
@@ -62,5 +60,4 @@ class ProductsController < ApplicationController
       redirect_to action: :index
     end
   end
-
 end
