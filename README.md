@@ -88,5 +88,5 @@ Things you may want to cover:
 ### Association
 
 - has_one   :address
-- belong_to :user
-- belong_to :product
+- belongs_to :user
+- belongs_to :product
