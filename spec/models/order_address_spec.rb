@@ -29,6 +29,11 @@ RSpec.describe OrderAddress, type: :model do
           @order_address.valid?
           expect(@order_address.errors.full_messages).to include("Postal can't be blank")
         end
+        it "郵便番号にハイフンがないと、決済できない" do
+          @order_address.postal = 1111111
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Postal は-をお願いします")
+        end
 
         it "都道府県を選択しないと、決済できない" do
           @order_address.consider_id = 1
@@ -49,6 +54,12 @@ RSpec.describe OrderAddress, type: :model do
           @order_address.phone_number = nil
           @order_address.valid?
           expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
+        end
+
+        it "電話番号が12桁以上だと、決済できない" do
+          @order_address.phone_number = 555566668888
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Phone number はハイフンなし、11桁以下でお願いします")
         end
       end
     end

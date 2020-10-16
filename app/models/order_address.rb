@@ -4,10 +4,10 @@ class OrderAddress
 
   with_options presence: true do
     validates :token
-    validates :postal, format: { with: /\A\d{3}[-]\d{4}\z/, message: "Postal can't be blank" }
+    validates :postal, format: { with: /\A\d{3}[-]\d{4}\z/, message: "は-をお願いします" }
     validates :municipality
     validates :address
-    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: "はハイフンなしで、携帯or固定電話でお願いします"}
+    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: "はハイフンなし、11桁以下でお願いします"}
   end
 
   with_options numericality: { other_than: 1 }, presence:true do

@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :shuppinsha_root_path, only: [:index]
   before_action :kounyuu_root_path, only: [:index]
+  before_action :set_order, only:[index, create]
 
   def index
     @product = Product.find(params[:product_id])
@@ -45,6 +46,10 @@ class OrdersController < ApplicationController
     if @product.order
       redirect_to root_path
     end
+  end
+
+  def set_order
+    @product = Product.find(params[:product_id])
   end
 
 end
