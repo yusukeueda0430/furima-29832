@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   before_action :shuppinsha_root_path, only: [:index]
   before_action :kounyuu_root_path, only: [:index]
-  before_action :set_order, only:[index, create]
+  before_action :set_order, only:[:index, :create]
+  before_action :authenticate_user!
 
   def index
     @product = Product.find(params[:product_id])
